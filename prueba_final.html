@@ -1,0 +1,2085 @@
+<!DOCTYPE html>
+<html lang="es">
+
+<head>
+
+<meta charset="UTF-8">
+
+<meta
+  name="viewport"
+  content="width=device-width, initial-scale=1.0"
+>
+
+<title>1º D - Test A - VOCABULARY USING COMPUTERS 26/27</title>
+
+<style>
+
+* {
+  box-sizing: border-box;
+}
+
+body {
+  margin: 0;
+  background: #f3f6fa;
+  font-family: Arial, Helvetica, sans-serif;
+  color: #202124;
+}
+
+#cabecera {
+  background: #174ea6;
+  color: white;
+  padding: 18px 25px;
+}
+
+#cabecera h1 {
+  max-width: 900px;
+  margin: auto;
+  font-size: 23px;
+}
+
+#contenedor {
+  max-width: 900px;
+  margin: 30px auto;
+  padding: 0 18px;
+}
+
+.tarjeta {
+  background: white;
+  border-radius: 10px;
+  padding: 28px;
+  box-shadow: 0 2px 7px rgba(0,0,0,.12);
+}
+
+h2 {
+  color: #174ea6;
+  margin-top: 0;
+}
+
+.seccion {
+  font-size: 19px;
+  font-weight: bold;
+  color: #174ea6;
+  margin-bottom: 15px;
+}
+
+.ayuda {
+  white-space: pre-wrap;
+  line-height: 1.5;
+  margin: 12px 0 20px;
+}
+
+.enunciado {
+  font-size: 20px;
+  font-weight: bold;
+  line-height: 1.45;
+  margin: 18px 0;
+}
+
+.numero {
+  color: #5f6368;
+  font-size: 14px;
+  margin-bottom: 15px;
+}
+
+.campo {
+  margin: 20px 0;
+}
+
+.campo label {
+  display: block;
+  font-weight: bold;
+  margin-bottom: 7px;
+}
+
+input[type="text"],
+input[type="email"] {
+  width: 100%;
+  padding: 12px;
+  border: 1px solid #9aa0a6;
+  border-radius: 5px;
+  font-size: 18px;
+}
+
+.opcion {
+  display: block;
+  padding: 10px 4px;
+  font-size: 18px;
+}
+
+.opcion input {
+  margin-right: 10px;
+  transform: scale(1.15);
+}
+
+.imagenPregunta {
+  max-width: 100%;
+  max-height: 430px;
+  display: block;
+  margin: 18px auto;
+}
+
+.botones {
+  display: flex;
+  justify-content: space-between;
+  gap: 15px;
+  margin-top: 30px;
+}
+
+button {
+  border: 0;
+  border-radius: 5px;
+  padding: 12px 22px;
+  font-size: 16px;
+  font-weight: bold;
+  cursor: pointer;
+}
+
+.primario {
+  background: #174ea6;
+  color: white;
+}
+
+.secundario {
+  background: #e8eaed;
+  color: #202124;
+}
+
+.entregar {
+  background: #137333;
+  color: white;
+}
+
+button:disabled {
+  opacity: .55;
+  cursor: default;
+}
+
+.aviso {
+  margin-top: 18px;
+  padding: 12px;
+  background: #fce8e6;
+  color: #b31412;
+  border-radius: 5px;
+  display: none;
+}
+
+#entregando {
+  text-align: center;
+}
+
+#exito {
+  text-align: center;
+}
+
+#exito h2 {
+  color: #137333;
+  font-size: 27px;
+}
+
+.noCerrar {
+  margin-top: 28px;
+  padding: 20px;
+  border: 3px solid #b31412;
+  color: #b31412;
+  font-size: 22px;
+  font-weight: bold;
+}
+
+@media (max-width: 600px) {
+
+  #cabecera h1 {
+    font-size: 19px;
+  }
+
+  .tarjeta {
+    padding: 20px;
+  }
+
+  .botones {
+    flex-wrap: wrap;
+  }
+
+}
+
+</style>
+
+</head>
+
+<body>
+
+<div id="cabecera">
+  <h1 id="titulo"></h1>
+</div>
+
+<div id="contenedor">
+
+  <div
+    id="pantalla"
+    class="tarjeta"
+  ></div>
+
+</div>
+
+
+<script>
+
+"use strict";
+
+const EXAMEN = {"examen":"prueba_final","titulo":"1º D - Test A - VOCABULARY USING COMPUTERS 26/27","preguntas":[{"tipo":"TEXT","tituloSeccion":"1- Complete the following sentence in English.","ayudaSeccion":"Importante: Escribe la respuesta en minúsculas (no incluyas puntos ni otros caracteres).\n\n\"Presiona el botón de encendido\"","titulo":"Press the ____________ button.","ayuda":"","obligatorio":false},{"tipo":"TEXT","tituloSeccion":"2- Complete the following sentence in English. ","ayudaSeccion":"Importante: Escribe la respuesta en minúsculas (no incluyas puntos ni otros caracteres).\n\n \"apaga el ordenador\"","titulo":"____________________ the computer.","ayuda":"","obligatorio":false},{"tipo":"CHECKBOX","tituloSeccion":"3- Complete the following sentence in English. ","ayudaSeccion":"","titulo":"Choose a result from the google ____________.","ayuda":"","obligatorio":false,"opciones":["switch","search","system","disk"]},{"tipo":"TEXT","tituloSeccion":"4- Complete the following sentence in English. ","ayudaSeccion":"Importante: Escribe la respuesta en minúsculas (no incluyas puntos ni otros caracteres).\n\n\"Escribe www.google.com en la barra de direcciones.\"","titulo":"Type www.google.com into the ____________ bar.","ayuda":"","obligatorio":false},{"tipo":"TEXT","tituloSeccion":"5- Complete the following sentence in English. ","ayudaSeccion":"Importante: Escribe la respuesta en minúsculas (no incluyas puntos ni otros caracteres).\n\n\"Escribe tu nombre de usuario para iniciar sesión.\"","titulo":"Enter your username to __________ in.","ayuda":"","obligatorio":false},{"tipo":"TEXT","tituloSeccion":"6- Translate into English.","ayudaSeccion":"Importante: Escribe la respuesta en minúsculas (no incluyas puntos ni otros caracteres).","titulo":"elimina ese archivo","ayuda":"","obligatorio":false},{"tipo":"TEXT","tituloSeccion":"7- Translate into English.","ayudaSeccion":"Importante: Escribe la respuesta en minúsculas (no incluyas puntos ni otros caracteres).","titulo":"botón pegar","ayuda":"","obligatorio":false},{"tipo":"TEXT","tituloSeccion":"8- Translate into English.","ayudaSeccion":"Importante: Escribe la respuesta en minúsculas (no incluyas puntos ni otros caracteres).","titulo":"contraseña","ayuda":"","obligatorio":false},{"tipo":"TEXT","tituloSeccion":"9- Complete the following sentence in English. ","ayudaSeccion":"Importante: Escribe la respuesta en minúsculas (no incluyas puntos ni otros caracteres).\n\n\"guárdalo como un documento de word.\"","titulo":"___________________ as a word document.","ayuda":"","obligatorio":false},{"tipo":"TEXT","tituloSeccion":"10- Translate into English.","ayudaSeccion":"Importante: Escribe la respuesta en minúsculas (no incluyas puntos ni otros caracteres).","titulo":"sistema operativo","ayuda":"","obligatorio":false},{"tipo":"TEXT","tituloSeccion":"11- Translate into English.","ayudaSeccion":"Importante: Escribe la respuesta en minúsculas (no incluyas puntos ni otros caracteres).","titulo":"papelera de reciclaje","ayuda":"","obligatorio":false},{"tipo":"TEXT","tituloSeccion":"12- Translate into English.","ayudaSeccion":"Importante: Escribe la respuesta en minúsculas (no incluyas puntos ni otros caracteres).","titulo":"cierra tu sesión","ayuda":"","obligatorio":false},{"tipo":"TEXT","tituloSeccion":"13- Translate into English.","ayudaSeccion":"","titulo":"navegador de internet","ayuda":"","obligatorio":false}]};
+
+const URL_RECEPTOR = "https://script.google.com/macros/s/AKfycbwlxulccv_Vod5_djQng49L9aCAXPos1WYJQHQQqg-IK_eMIeYirY4xxI2Jj5vDCzra/exec";
+
+const CLAVE =
+  "EXAMEN_WEB_" + EXAMEN.examen;
+
+
+/*
+============================================================
+ SEGURIDAD BÁSICA DEL NAVEGADOR
+============================================================
+*/
+
+document.addEventListener(
+  "contextmenu",
+  function(e) {
+    e.preventDefault();
+  }
+);
+
+
+/*
+============================================================
+ ESTADO
+============================================================
+*/
+
+let estado = cargarEstado();
+
+let ocultoDesde = null;
+
+
+/*
+============================================================
+ CREAR ESTADO INICIAL
+============================================================
+*/
+
+function estadoInicial() {
+
+  return {
+
+    version: 1,
+
+    examen:
+      EXAMEN.examen,
+
+    correo: "",
+
+    nombre: "",
+
+    apellidos: "",
+
+    respuestas:
+      EXAMEN.preguntas
+        .filter(function(p) {
+          return p.tipo !== "IMAGEN";
+        })
+        .map(function() {
+          return "";
+        }),
+
+    pagina: -1,
+
+    inicio:
+      new Date().toISOString(),
+
+    entregaId:
+      crearEntregaId(),
+
+    incidencias: [],
+
+    entregado: false
+
+  };
+
+}
+
+
+/*
+============================================================
+ CARGAR / GUARDAR
+============================================================
+*/
+
+function cargarEstado() {
+
+  try {
+
+    const guardado =
+      localStorage.getItem(CLAVE);
+
+    if (guardado) {
+
+      const obj =
+        JSON.parse(guardado);
+
+      if (
+        obj &&
+        obj.examen === EXAMEN.examen
+      ) {
+
+        return obj;
+
+      }
+
+    }
+
+  } catch (e) {
+  }
+
+  return estadoInicial();
+
+}
+
+
+function guardarEstado() {
+
+  try {
+
+    localStorage.setItem(
+      CLAVE,
+      JSON.stringify(estado)
+    );
+
+  } catch (e) {
+  }
+
+}
+
+
+/*
+============================================================
+ IDENTIFICADOR ÚNICO DE ENTREGA
+============================================================
+*/
+
+function crearEntregaId() {
+
+  if (
+    window.crypto &&
+    crypto.randomUUID
+  ) {
+
+    return crypto.randomUUID();
+
+  }
+
+  return (
+    Date.now().toString(36) +
+    "_" +
+    Math.random()
+      .toString(36)
+      .substring(2)
+  );
+
+}
+
+
+/*
+============================================================
+ ELEMENTOS
+============================================================
+*/
+
+document.getElementById(
+  "titulo"
+).textContent =
+  EXAMEN.titulo;
+
+
+const pantalla =
+  document.getElementById(
+    "pantalla"
+  );
+
+
+/*
+============================================================
+ IMÁGENES INDEPENDIENTES
+============================================================
+
+Las imágenes independientes del Form se asocian
+a la siguiente pregunta.
+============================================================
+*/
+
+function prepararPreguntas() {
+
+  const resultado = [];
+
+  let imagenesPendientes = [];
+
+
+  EXAMEN.preguntas.forEach(
+    function(p) {
+
+      if (p.tipo === "IMAGEN") {
+
+        imagenesPendientes.push(p);
+
+      } else {
+
+        p.imagenesPrevias =
+          imagenesPendientes;
+
+        imagenesPendientes = [];
+
+        resultado.push(p);
+
+      }
+
+    }
+  );
+
+
+  return resultado;
+
+}
+
+
+const preguntasPreparadas =
+  prepararPreguntas();
+
+
+/*
+============================================================
+ MOSTRAR
+============================================================
+*/
+
+function mostrar() {
+
+  if (estado.entregado) {
+
+    mostrarExito();
+    return;
+
+  }
+
+
+  if (estado.pagina < 0) {
+
+    mostrarIdentificacion();
+
+  } else if (
+    estado.pagina >=
+    preguntasPreparadas.length
+  ) {
+
+    mostrarPantallaFinal();
+
+  } else {
+
+    mostrarPregunta(
+      estado.pagina
+    );
+
+  }
+
+}
+
+
+/*
+============================================================
+ IDENTIFICACIÓN
+============================================================
+*/
+
+function mostrarIdentificacion() {
+
+  pantalla.innerHTML = "";
+
+
+  const h2 =
+    document.createElement("h2");
+
+  h2.textContent =
+    "Datos del alumno";
+
+  pantalla.appendChild(h2);
+
+
+  crearCampoIdentificacion(
+    "Correo Murciaeduca",
+    "email",
+    "correo"
+  );
+
+  crearCampoIdentificacion(
+    "Nombre",
+    "text",
+    "nombre"
+  );
+
+  crearCampoIdentificacion(
+    "Apellidos",
+    "text",
+    "apellidos"
+  );
+
+
+  const aviso =
+    crearAviso();
+
+  pantalla.appendChild(aviso);
+
+
+  const botones =
+    document.createElement("div");
+
+  botones.className =
+    "botones";
+
+
+  const espacio =
+    document.createElement("span");
+
+
+  const comenzar =
+    document.createElement("button");
+
+  comenzar.className =
+    "primario";
+
+  comenzar.textContent =
+    "COMENZAR";
+
+
+  comenzar.onclick =
+    function() {
+
+      guardarIdentificacionVisible();
+
+
+      if (
+        !estado.correo.trim() ||
+        !estado.nombre.trim() ||
+        !estado.apellidos.trim()
+      ) {
+
+        mostrarAviso(
+          aviso,
+          "Completa Correo Murciaeduca, Nombre y Apellidos."
+        );
+
+        return;
+
+      }
+
+
+      estado.pagina = 0;
+
+      guardarEstado();
+
+      mostrar();
+
+    };
+
+
+  botones.appendChild(
+    espacio
+  );
+
+  botones.appendChild(
+    comenzar
+  );
+
+  pantalla.appendChild(
+    botones
+  );
+
+}
+
+
+function crearCampoIdentificacion(
+  etiqueta,
+  tipo,
+  propiedad
+) {
+
+  const bloque =
+    document.createElement("div");
+
+  bloque.className =
+    "campo";
+
+
+  const label =
+    document.createElement("label");
+
+  label.textContent =
+    etiqueta;
+
+
+  const input =
+    document.createElement("input");
+
+  input.type =
+    tipo;
+
+  input.id =
+    "id_" + propiedad;
+
+  input.value =
+    estado[propiedad] || "";
+
+  prepararInputTexto(
+    input
+  );
+
+
+  input.addEventListener(
+    "input",
+    function() {
+
+      estado[propiedad] =
+        input.value;
+
+      guardarEstado();
+
+    }
+  );
+
+
+  bloque.appendChild(
+    label
+  );
+
+  bloque.appendChild(
+    input
+  );
+
+  pantalla.appendChild(
+    bloque
+  );
+
+}
+
+
+function guardarIdentificacionVisible() {
+
+  ["correo", "nombre", "apellidos"]
+    .forEach(
+      function(propiedad) {
+
+        const elemento =
+          document.getElementById(
+            "id_" + propiedad
+          );
+
+        if (elemento) {
+
+          estado[propiedad] =
+            elemento.value;
+
+        }
+
+      }
+    );
+
+
+  guardarEstado();
+
+}
+
+
+/*
+============================================================
+ PREGUNTA
+============================================================
+*/
+
+function mostrarPregunta(indice) {
+
+  const p =
+    preguntasPreparadas[indice];
+
+  pantalla.innerHTML = "";
+
+
+  const numero =
+    document.createElement("div");
+
+  numero.className =
+    "numero";
+
+  numero.textContent =
+    "Pregunta " +
+    (indice + 1) +
+    " de " +
+    preguntasPreparadas.length;
+
+  pantalla.appendChild(
+    numero
+  );
+
+
+  if (p.tituloSeccion) {
+
+    const seccion =
+      document.createElement("div");
+
+    seccion.className =
+      "seccion";
+
+    seccion.textContent =
+      p.tituloSeccion;
+
+    pantalla.appendChild(
+      seccion
+    );
+
+  }
+
+
+  if (p.ayudaSeccion) {
+
+    const ayuda =
+      document.createElement("div");
+
+    ayuda.className =
+      "ayuda";
+
+    ayuda.textContent =
+      p.ayudaSeccion;
+
+    pantalla.appendChild(
+      ayuda
+    );
+
+  }
+
+
+  if (p.imagenesPrevias) {
+
+    p.imagenesPrevias.forEach(
+      function(imagen) {
+
+        if (imagen.titulo) {
+
+          const tituloImagen =
+            document.createElement(
+              "div"
+            );
+
+          tituloImagen.textContent =
+            imagen.titulo;
+
+          pantalla.appendChild(
+            tituloImagen
+          );
+
+        }
+
+
+        if (imagen.imagen) {
+
+          const img =
+            document.createElement(
+              "img"
+            );
+
+          img.src =
+            imagen.imagen;
+
+          img.className =
+            "imagenPregunta";
+
+          pantalla.appendChild(
+            img
+          );
+
+        }
+
+      }
+    );
+
+  }
+
+
+  const enunciado =
+    document.createElement("div");
+
+  enunciado.className =
+    "enunciado";
+
+  enunciado.textContent =
+    p.titulo;
+
+  pantalla.appendChild(
+    enunciado
+  );
+
+
+  if (p.ayuda) {
+
+    const ayuda =
+      document.createElement("div");
+
+    ayuda.className =
+      "ayuda";
+
+    ayuda.textContent =
+      p.ayuda;
+
+    pantalla.appendChild(
+      ayuda
+    );
+
+  }
+
+
+  crearControlRespuesta(
+    p,
+    indice
+  );
+
+
+  const aviso =
+    crearAviso();
+
+  pantalla.appendChild(
+    aviso
+  );
+
+
+  crearBotonesPregunta(
+    p,
+    indice,
+    aviso
+  );
+
+}
+
+
+/*
+============================================================
+ CONTROL DE RESPUESTA
+============================================================
+*/
+
+function crearControlRespuesta(
+  p,
+  indice
+) {
+
+  if (p.tipo === "TEXT") {
+
+    const input =
+      document.createElement("input");
+
+    input.type =
+      "text";
+
+    input.value =
+      estado.respuestas[indice] || "";
+
+    prepararInputTexto(
+      input
+    );
+
+
+    input.addEventListener(
+      "input",
+      function() {
+
+        estado.respuestas[indice] =
+          input.value;
+
+        guardarEstado();
+
+      }
+    );
+
+
+    pantalla.appendChild(
+      input
+    );
+
+    return;
+
+  }
+
+
+  if (
+    p.tipo === "MULTIPLE_CHOICE"
+  ) {
+
+    p.opciones.forEach(
+      function(opcion) {
+
+        const label =
+          document.createElement(
+            "label"
+          );
+
+        label.className =
+          "opcion";
+
+
+        const input =
+          document.createElement(
+            "input"
+          );
+
+        input.type =
+          "radio";
+
+        input.name =
+          "respuesta";
+
+        input.value =
+          opcion;
+
+        input.checked =
+          estado.respuestas[indice] ===
+          opcion;
+
+
+        input.addEventListener(
+          "change",
+          function() {
+
+            estado.respuestas[indice] =
+              opcion;
+
+            guardarEstado();
+
+          }
+        );
+
+
+        label.appendChild(
+          input
+        );
+
+        label.appendChild(
+          document.createTextNode(
+            opcion
+          )
+        );
+
+        pantalla.appendChild(
+          label
+        );
+
+      }
+    );
+
+    return;
+
+  }
+
+
+  if (p.tipo === "CHECKBOX") {
+
+    let seleccionadas =
+      estado.respuestas[indice];
+
+    if (
+      !Array.isArray(seleccionadas)
+    ) {
+
+      seleccionadas = [];
+
+      estado.respuestas[indice] =
+        seleccionadas;
+
+    }
+
+
+    p.opciones.forEach(
+      function(opcion) {
+
+        const label =
+          document.createElement(
+            "label"
+          );
+
+        label.className =
+          "opcion";
+
+
+        const input =
+          document.createElement(
+            "input"
+          );
+
+        input.type =
+          "checkbox";
+
+        input.value =
+          opcion;
+
+        input.checked =
+          seleccionadas.indexOf(
+            opcion
+          ) !== -1;
+
+
+        input.addEventListener(
+          "change",
+          function() {
+
+            let actuales =
+              estado.respuestas[indice];
+
+            if (
+              !Array.isArray(actuales)
+            ) {
+
+              actuales = [];
+
+            }
+
+
+            if (input.checked) {
+
+              if (
+                actuales.indexOf(
+                  opcion
+                ) === -1
+              ) {
+
+                actuales.push(
+                  opcion
+                );
+
+              }
+
+            } else {
+
+              actuales =
+                actuales.filter(
+                  function(v) {
+                    return v !== opcion;
+                  }
+                );
+
+            }
+
+
+            estado.respuestas[indice] =
+              actuales;
+
+            guardarEstado();
+
+          }
+        );
+
+
+        label.appendChild(
+          input
+        );
+
+        label.appendChild(
+          document.createTextNode(
+            opcion
+          )
+        );
+
+        pantalla.appendChild(
+          label
+        );
+
+      }
+    );
+
+  }
+
+}
+
+
+/*
+============================================================
+ DESACTIVAR AYUDAS DEL NAVEGADOR
+============================================================
+*/
+
+function prepararInputTexto(input) {
+
+  input.setAttribute(
+    "autocomplete",
+    "off"
+  );
+
+  input.setAttribute(
+    "autocorrect",
+    "off"
+  );
+
+  input.setAttribute(
+    "autocapitalize",
+    "off"
+  );
+
+  input.setAttribute(
+    "spellcheck",
+    "false"
+  );
+
+}
+
+
+/*
+============================================================
+ BOTONES
+============================================================
+*/
+
+function crearBotonesPregunta(
+  p,
+  indice,
+  aviso
+) {
+
+  const botones =
+    document.createElement("div");
+
+  botones.className =
+    "botones";
+
+
+  const anterior =
+    document.createElement("button");
+
+  anterior.className =
+    "secundario";
+
+  anterior.textContent =
+    "ANTERIOR";
+
+
+  anterior.onclick =
+    function() {
+
+      if (indice === 0) {
+
+        estado.pagina = -1;
+
+      } else {
+
+        estado.pagina =
+          indice - 1;
+
+      }
+
+      guardarEstado();
+
+      mostrar();
+
+    };
+
+
+  botones.appendChild(
+    anterior
+  );
+
+
+  const siguiente =
+    document.createElement("button");
+
+  siguiente.className =
+    "primario";
+
+  siguiente.textContent =
+    "SIGUIENTE";
+
+
+  siguiente.onclick =
+    function() {
+
+      if (
+        p.obligatorio &&
+        respuestaVacia(
+          estado.respuestas[indice]
+        )
+      ) {
+
+        mostrarAviso(
+          aviso,
+          "Debes responder esta pregunta antes de continuar."
+        );
+
+        return;
+
+      }
+
+
+      /*
+       * Después de la última pregunta
+       * pasamos a la pantalla final.
+       */
+
+      if (
+        indice ===
+        preguntasPreparadas.length - 1
+      ) {
+
+        estado.pagina =
+          preguntasPreparadas.length;
+
+        guardarEstado();
+
+        mostrarPantallaFinal();
+
+      } else {
+
+        estado.pagina =
+          indice + 1;
+
+        guardarEstado();
+
+        mostrar();
+
+      }
+
+    };
+
+
+  botones.appendChild(
+    siguiente
+  );
+
+  pantalla.appendChild(
+    botones
+  );
+
+}
+
+/*
+============================================================
+ PANTALLA FINAL
+============================================================
+*/
+
+function mostrarPantallaFinal() {
+
+  pantalla.innerHTML = "";
+
+
+  const h2 =
+    document.createElement("h2");
+
+  h2.textContent =
+    "FIN DEL EXAMEN";
+
+  pantalla.appendChild(h2);
+
+
+  const texto1 =
+    document.createElement("p");
+
+  texto1.textContent =
+    "Has llegado al final del examen.";
+
+  pantalla.appendChild(texto1);
+
+
+  const texto2 =
+    document.createElement("p");
+
+  texto2.textContent =
+    "Si quieres revisar alguna respuesta, pulsa ANTERIOR.";
+
+  pantalla.appendChild(texto2);
+
+
+  const texto3 =
+    document.createElement("p");
+
+  texto3.textContent =
+    "Cuando estés seguro de haber terminado, pulsa ENTREGAR EXAMEN.";
+
+  pantalla.appendChild(texto3);
+
+
+  /*
+   * AVISO SOBRE EL TIEMPO DE ENTREGA
+   */
+
+  const textoEspera =
+    document.createElement("p");
+
+  textoEspera.innerHTML =
+    "<strong>Después de pulsar ENTREGAR EXAMEN, espera unos 10 segundos hasta que se confirme la entrega del examen.</strong>";
+
+  pantalla.appendChild(textoEspera);
+
+
+  const aviso =
+    crearAviso();
+
+  pantalla.appendChild(aviso);
+
+
+  const botones =
+    document.createElement("div");
+
+  botones.className =
+    "botones";
+
+
+  /*
+   * ANTERIOR
+   */
+
+  const anterior =
+    document.createElement("button");
+
+  anterior.className =
+    "secundario";
+
+  anterior.textContent =
+    "ANTERIOR";
+
+
+  anterior.onclick =
+    function() {
+
+      estado.pagina =
+        preguntasPreparadas.length - 1;
+
+      guardarEstado();
+
+      mostrar();
+
+    };
+
+
+  /*
+   * ENTREGAR
+   */
+
+  const entregar =
+    document.createElement("button");
+
+  entregar.className =
+    "entregar";
+
+  entregar.textContent =
+    "ENTREGAR EXAMEN";
+
+
+  entregar.onclick =
+    function() {
+
+      entregarExamen(
+        entregar,
+        aviso
+      );
+
+    };
+
+
+  botones.appendChild(anterior);
+
+  botones.appendChild(entregar);
+
+  pantalla.appendChild(botones);
+
+}
+
+
+/*
+============================================================
+ RESPUESTA VACÍA
+============================================================
+*/
+
+function respuestaVacia(valor) {
+
+  if (Array.isArray(valor)) {
+
+    return valor.length === 0;
+
+  }
+
+  return (
+    valor == null ||
+    String(valor).trim() === ""
+  );
+
+}
+
+
+/*
+============================================================
+ AVISOS
+============================================================
+*/
+
+function crearAviso() {
+
+  const aviso =
+    document.createElement("div");
+
+  aviso.className =
+    "aviso";
+
+  return aviso;
+
+}
+
+
+function mostrarAviso(
+  elemento,
+  mensaje
+) {
+
+  elemento.textContent =
+    mensaje;
+
+  elemento.style.display =
+    "block";
+
+}
+
+
+/*
+============================================================
+ INCIDENCIAS DE VISIBILIDAD
+============================================================
+*/
+
+document.addEventListener(
+  "visibilitychange",
+  function() {
+
+    if (estado.entregado) {
+      return;
+    }
+
+
+    if (document.hidden) {
+
+      ocultoDesde =
+        Date.now();
+
+    } else {
+
+      if (ocultoDesde !== null) {
+
+        const ahora =
+          Date.now();
+
+        const segundos =
+          Math.round(
+            (ahora - ocultoDesde) /
+            1000
+          );
+
+
+        estado.incidencias.push({
+
+          fecha:
+            new Date()
+              .toLocaleString(),
+
+          evento:
+            "Cambio pestaña examen",
+
+          duracion:
+            segundos
+
+        });
+
+
+        ocultoDesde =
+          null;
+
+        guardarEstado();
+
+      }
+
+    }
+
+  }
+);
+
+
+/*
+============================================================
+ ENTREGA
+============================================================
+*/
+
+function entregarExamen(
+  boton,
+  aviso
+) {
+
+  boton.disabled = true;
+
+  aviso.style.display =
+    "none";
+
+
+  guardarEstado();
+
+
+  const datos = {
+
+    examen:
+      EXAMEN.examen,
+
+    entregaId:
+      estado.entregaId,
+
+    correo:
+      estado.correo,
+
+    nombre:
+      estado.nombre,
+
+    apellidos:
+      estado.apellidos,
+
+    respuestas:
+      estado.respuestas,
+
+    incidencias:
+      estado.incidencias
+
+  };
+
+
+  /*
+   * Enviamos mediante formulario oculto.
+   *
+   * Esto evita depender de CORS para el POST.
+   * La confirmación real se realizará después
+   * consultando entregaId.
+   */
+
+  enviarPOST(
+    datos,
+    function() {
+
+      comprobarEntrega(
+        0,
+        boton,
+        aviso
+      );
+
+    }
+  );
+
+}
+
+
+/*
+============================================================
+ POST
+============================================================
+*/
+
+function enviarPOST(
+  datos,
+  callback
+) {
+
+  const iframe =
+    document.createElement(
+      "iframe"
+    );
+
+  iframe.name =
+    "envio_" +
+    Date.now();
+
+  iframe.style.display =
+    "none";
+
+
+  const form =
+    document.createElement(
+      "form"
+    );
+
+  form.method =
+    "POST";
+
+  form.action =
+    URL_RECEPTOR;
+
+  form.target =
+    iframe.name;
+
+  form.style.display =
+    "none";
+
+
+  const input =
+    document.createElement(
+      "input"
+    );
+
+  input.type =
+    "hidden";
+
+  input.name =
+    "datos";
+
+  input.value =
+    JSON.stringify(datos);
+
+
+  form.appendChild(
+    input
+  );
+
+
+  /*
+   * Garantiza que la comprobación de entrega
+   * se inicia una sola vez, aunque coincidan
+   * iframe.onload y el temporizador de seguridad.
+   */
+
+  let comprobacionIniciada =
+    false;
+
+
+  function iniciarComprobacion() {
+
+    if (comprobacionIniciada) {
+      return;
+    }
+
+    comprobacionIniciada =
+      true;
+
+
+    try {
+      form.remove();
+    } catch (e) {
+    }
+
+    try {
+      iframe.remove();
+    } catch (e) {
+    }
+
+
+    callback();
+
+  }
+
+
+  document.body.appendChild(
+    iframe
+  );
+
+  document.body.appendChild(
+    form
+  );
+
+
+  iframe.onload =
+    function() {
+
+      setTimeout(
+        iniciarComprobacion,
+        500
+      );
+
+    };
+
+
+  form.submit();
+
+
+  /*
+   * Si el evento load tarda o no se produce,
+   * iniciamos igualmente la comprobación.
+   */
+
+  setTimeout(
+    iniciarComprobacion,
+    4000
+  );
+
+}
+
+
+/*
+============================================================
+ COMPROBAR ENTREGA
+============================================================
+*/
+
+function comprobarEntrega(
+  intento,
+  boton,
+  aviso
+) {
+
+  const MAX_INTENTOS = 5;
+
+  /*
+   * Damos algo más de margen a Apps Script que en
+   * la versión anterior. Una respuesta tardía ya no
+   * provocará "callback is not defined".
+   */
+
+  const TIEMPO_ESPERA = 6000;
+
+  const PAUSA_REINTENTO = 1000;
+
+
+  if (intento >= MAX_INTENTOS) {
+
+    boton.disabled =
+      false;
+
+    mostrarAviso(
+      aviso,
+      "No se ha podido confirmar la entrega. " +
+      "Tus respuestas siguen guardadas en este ordenador. " +
+      "NO CIERRES esta ventana. Avisa al profesor y vuelve a pulsar ENTREGAR EXAMEN."
+    );
+
+    return;
+
+  }
+
+
+  const nombreCallback =
+    "confirmar_" +
+    Date.now() +
+    "_" +
+    Math.floor(
+      Math.random() * 100000
+    );
+
+
+  const script =
+    document.createElement(
+      "script"
+    );
+
+
+  let terminado =
+    false;
+
+
+  /*
+   * No borramos inmediatamente el callback al terminar
+   * un intento. Lo dejamos temporalmente como función
+   * vacía para absorber una posible respuesta JSONP
+   * que llegue tarde.
+   */
+
+  function retirarCallbackMasTarde() {
+
+    window[nombreCallback] =
+      function() {
+        /*
+         * Respuesta tardía de un intento anterior.
+         * Se ignora de forma segura.
+         */
+      };
+
+
+    setTimeout(
+      function() {
+
+        try {
+          delete window[nombreCallback];
+        } catch (e) {
+        }
+
+      },
+      15000
+    );
+
+  }
+
+
+  function limpiarScript() {
+
+    try {
+      script.remove();
+    } catch (e) {
+    }
+
+  }
+
+
+  function reintentar() {
+
+    setTimeout(
+      function() {
+
+        comprobarEntrega(
+          intento + 1,
+          boton,
+          aviso
+        );
+
+      },
+      PAUSA_REINTENTO
+    );
+
+  }
+
+
+  window[nombreCallback] =
+    function(resultado) {
+
+      if (terminado) {
+        return;
+      }
+
+      terminado = true;
+
+      limpiarScript();
+
+
+      if (
+        resultado &&
+        resultado.ok
+      ) {
+
+        /*
+         * La confirmación es válida.
+         * Ya podemos retirar este callback.
+         */
+
+        retirarCallbackMasTarde();
+
+        estado.entregado =
+          true;
+
+        guardarEstado();
+
+        mostrarExito();
+
+      } else {
+
+        retirarCallbackMasTarde();
+
+        reintentar();
+
+      }
+
+    };
+
+
+  script.onerror =
+    function() {
+
+      if (terminado) {
+        return;
+      }
+
+      terminado = true;
+
+      limpiarScript();
+
+      retirarCallbackMasTarde();
+
+      reintentar();
+
+    };
+
+
+  script.src =
+    URL_RECEPTOR +
+    "?entregaId=" +
+    encodeURIComponent(
+      estado.entregaId
+    ) +
+    "&callback=" +
+    encodeURIComponent(
+      nombreCallback
+    ) +
+    "&t=" +
+    Date.now();
+
+
+  document.body.appendChild(
+    script
+  );
+
+
+  setTimeout(
+    function() {
+
+      if (terminado) {
+        return;
+      }
+
+      terminado = true;
+
+      limpiarScript();
+
+      retirarCallbackMasTarde();
+
+      reintentar();
+
+    },
+    TIEMPO_ESPERA
+  );
+
+}
+
+
+/*
+============================================================
+ ENTREGA CORRECTA
+============================================================
+*/
+
+function mostrarExito() {
+
+  pantalla.innerHTML = "";
+
+
+  const contenedor =
+    document.createElement(
+      "div"
+    );
+
+  contenedor.id =
+    "exito";
+
+
+  const h2 =
+    document.createElement(
+      "h2"
+    );
+
+  h2.textContent =
+    "Examen entregado correctamente";
+
+
+  const texto =
+    document.createElement(
+      "p"
+    );
+
+  texto.textContent =
+    "La entrega ha sido recibida.";
+
+
+  const noCerrar =
+    document.createElement(
+      "div"
+    );
+
+  noCerrar.className =
+    "noCerrar";
+
+  noCerrar.textContent =
+    "NO CIERRES ESTA VENTANA HASTA QUE LO DIGA EL PROFESOR";
+
+
+  contenedor.appendChild(
+    h2
+  );
+
+  contenedor.appendChild(
+    texto
+  );
+
+  contenedor.appendChild(
+    noCerrar
+  );
+
+
+  pantalla.appendChild(
+    contenedor
+  );
+
+}
+
+
+/*
+============================================================
+ ARRANQUE
+============================================================
+*/
+
+guardarEstado();
+
+mostrar();
+
+/*
+============================================================
+ FUNCIONAMIENTO OFFLINE
+============================================================
+*/
+
+if ("serviceWorker" in navigator) {
+
+  window.addEventListener(
+    "load",
+    function() {
+
+      navigator.serviceWorker
+        .register("./sw.js")
+        .then(function() {
+
+          /*
+           * Guardamos también la página actual de forma
+           * proactiva. Así el primer acceso online basta
+           * para que el examen pueda recargarse sin Internet.
+           */
+
+          if ("caches" in window) {
+
+            const urlExamen =
+              new URL(
+                window.location.href
+              );
+
+            urlExamen.hash = "";
+
+
+            return caches
+              .open(
+                "examenes-web-v1"
+              )
+              .then(
+                function(cache) {
+
+                  return cache.add(
+                    urlExamen.href
+                  );
+
+                }
+              );
+
+          }
+
+        })
+        .catch(function(error) {
+
+          console.log(
+            "Modo offline no disponible:",
+            error
+          );
+
+        });
+
+    }
+  );
+
+}
+
+</script>
+
+</body>
+
+</html>
