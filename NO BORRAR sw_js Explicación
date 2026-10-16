@@ -1,6 +1,10 @@
 No eliminar de esta rama el archivo sw.js del main de Github /web_exam/.
 
-Su función es que un alumno pueda recuperar las respuestas si se queda sin internet momentaneamente.
+Ese archivo JavaScript es el Service Worker (sw.js) de tu sistema de exámenes.
+
+Cuando un alumno se descarga correctamente un examen, se almacena una copia en la caché del navegador.
+
+Su función principal es permitir que los alumnos puedan seguir utilizando el examen cuando se interrumpe la conexión a Internet.
 
 Está ligado al código html de los exámenes.
 
